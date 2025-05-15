@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import './Header.css';
 import { motion, useScroll, useMotionValueEvent, LayoutGroup } from 'framer-motion';
 import logoImage from '../images/logo.png';
@@ -79,19 +79,6 @@ const Header = () => {
     } else {
       console.warn(`Hedef element bulunamadı: ${targetId}`);
     }
-  };
-
-  const letterVariants = {
-    hidden: { opacity: 0, y: -20 },
-    visible: (i) => ({
-      opacity: 1,
-      y: 0,
-      transition: {
-        delay: i * 0.05,
-        type: 'spring',
-        stiffness: 120,
-      },
-    }),
   };
 
   const navItemVariants = {

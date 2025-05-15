@@ -126,18 +126,6 @@ const Hero = () => {
     }
   };
 
-  const buttonVariants = {
-    hover: {
-      scale: 1.08,
-      textShadow: "0px 0px 10px rgba(123, 97, 255, 0.8)", // Neon mor parlama
-      boxShadow: "0px 0px 18px rgba(123, 97, 255, 0.6)",  // Neon mor kutu gölgesi
-      transition: { duration: 0.2, type: 'spring', stiffness: 300 },
-    },
-    tap: {
-      scale: 0.92,
-    },
-  };
-
   return (
     <section id="ana-sayfa" className="hero-section">
       {/* <Suspense fallback={<div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', color: 'white' }}>3D Sahne Yükleniyor...</div>}> */}
@@ -200,8 +188,13 @@ const Hero = () => {
           href={ctaButtonLink} // Yeni link
           className="hero-cta-button"
           variants={baseItemVariants} // Buton da temel animasyonla gelsin
-          whileHover="hover" // Kendi buton hover varyantını kullansın
-          whileTap="tap"
+          whileHover={{ 
+            scale: 1.08, 
+            textShadow: "0px 0px 10px rgba(123, 97, 255, 0.8)",
+            boxShadow: "0px 0px 18px rgba(123, 97, 255, 0.6)",
+            transition: { duration: 0.2, type: 'spring', stiffness: 300 }
+          }}
+          whileTap={{ scale: 0.92 }}
           style={{ y: yButton, position: 'relative' }} // Buton etrafına parıltı için
         >
           {ctaButtonText} {/* Yeni buton metni */} 

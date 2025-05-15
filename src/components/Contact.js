@@ -25,17 +25,6 @@ const itemVariants = {
   }
 };
 
-const buttonVariants = {
-  hover: {
-    scale: 1.05,
-    boxShadow: "0px 0px 12px rgb(97,218,251,0.7)", // Bionluk rengine yakın bir vurgu
-    transition: { duration: 0.3, yoyo: Infinity },
-  },
-  tap: {
-    scale: 0.95,
-  },
-};
-
 const Contact = () => {
   const bionlukProfileUrl = "https://bionluk.com/zumenzu";
   const githubUrl = "https://github.com/umutdalga";
@@ -65,9 +54,9 @@ const Contact = () => {
         target="_blank"
         rel="noopener noreferrer"
         className="bionluk-button"
-        variants={itemVariants} // itemVariants'ı burada da kullanabiliriz
-        whileHover="hover"
-        whileTap="tap"
+        variants={itemVariants} // Temel giriş animasyonu için
+        whileHover={{ scale: 1.05, color: '#533B4D', backgroundColor: '#FAA4BD', boxShadow: "0px 0px 10px #FAA4BD" }}
+        whileTap={{ scale: 0.95 }}
       >
         Bionluk Profilimize Gidin
       </motion.a>

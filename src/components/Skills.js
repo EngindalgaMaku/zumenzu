@@ -1,9 +1,9 @@
 import React from 'react';
 import './Skills.css';
 import { motion } from 'framer-motion';
-import { FaReact, FaHtml5, FaCss3Alt, FaNodeJs, FaGitAlt, FaFigma, FaSass } from 'react-icons/fa';
+import { FaReact, FaHtml5, FaNodeJs, FaGitAlt, FaFigma, FaSass } from 'react-icons/fa';
 import { IoLogoJavascript } from 'react-icons/io5';
-import { SiFramer, SiThreedotjs, SiExpress, SiMongodb, SiTypescript, SiNextdotjs } from 'react-icons/si';
+import { SiFramer, SiThreedotjs, SiExpress, SiMongodb, SiTypescript } from 'react-icons/si';
 import { MdPhonelinkSetup, MdOutlineWebhook } from 'react-icons/md';
 
 // Örnek yetenek verileri ve react-icons ile ikonlar
