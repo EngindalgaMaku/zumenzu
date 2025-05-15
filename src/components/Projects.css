@@ -1,0 +1,320 @@
+.projects-section {
+  padding: 60px 20px;
+  /* background-color: #1C1E30; Yeni: Derin Uzay Mavisi - KALDIRILDI */
+}
+
+.projects-section h2 {
+  text-align: center;
+  font-size: 2.5em;
+  margin-bottom: 50px;
+  color: #FFFFFF; /* Beyaz */
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 35px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.project-card {
+  background-color: rgba(42, 45, 73, 0.65); /* Yeni: Orta Uzay Mavisi/Mor (#2A2D49) %65 opaklık */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(123, 97, 255, 0.25); /* Yeni: Neon Mor (#7B61FF) %25 opaklık */
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.45); /* Gölge biraz daha belirginleştirildi */
+  display: flex;
+  flex-direction: column;
+  max-width: 400px; /* Kartın maksimum genişliği sınırlandırıldı */
+  margin-left: auto; /* Kartı grid hücresinde ortalamak için */
+  margin-right: auto; /* Kartı grid hücresinde ortalamak için */
+}
+
+/* Framer Motion hover animasyonu için bu CSS'e gerek kalmadı
+.project-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+*/
+
+.project-image-container {
+  width: 100%;
+  padding-top: 62.5%; 
+  position: relative;
+  overflow: hidden;
+  background-color: #0D0F1A; /* Yeni: Çok Koyu Uzay Mavisi/Siyah (resim yüklenene kadar) */
+}
+
+.project-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease-out, opacity 0.4s ease-out;
+  opacity: 0.9; /* Hafif bir solukluk efekti */
+}
+
+.project-card:hover .project-image {
+  transform: scale(1.05);
+  opacity: 1;
+}
+
+.project-info {
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  text-align: left;
+}
+
+.project-title {
+  font-size: 1.7em;
+  color: #7B61FF; /* Yeni: Neon Mor */
+  margin-bottom: 12px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+}
+
+.project-description {
+  font-size: 0.95em;
+  color: #E0E0FF; /* Yeni: Çok Açık Lavanta */
+  margin-bottom: 20px;
+  flex-grow: 1;
+  line-height: 1.6;
+  letter-spacing: 0.2px;
+}
+
+.project-tags {
+  margin-bottom: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tag {
+  background-color: rgba(123, 97, 255, 0.15); /* Yeni: Neon Mor transparan */
+  color: #7B61FF; /* Yeni: Neon Mor */
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.8em;
+  font-weight: 500;
+}
+
+.project-links {
+  display: flex;
+  gap: 15px;
+  margin-top: auto;
+}
+
+.project-link {
+  color: #7B61FF; /* Yeni: Neon Mor */
+  text-decoration: none;
+  padding: 9px 18px;
+  border: 1px solid #7B61FF; /* Yeni: Neon Mor */
+  border-radius: 6px;
+  font-weight: 600;
+  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+  font-size: 0.9em;
+}
+
+.project-link.live:hover {
+  background-color: #7B61FF; /* Yeni: Neon Mor */
+  color: #FFFFFF; /* Yeni: Beyaz (Neon Mor arka planla daha iyi kontrast) */
+  box-shadow: 0 0 12px rgba(123, 97, 255, 0.6);
+}
+
+.project-link.source {
+  color: #E0E0FF; /* Yeni: Çok Açık Lavanta */
+  border-color: #E0E0FF; /* Yeni: Çok Açık Lavanta */
+}
+
+.project-link.source:hover {
+  background-color: #2A2D49; /* Yeni: Orta Uzay Mavisi/Mor */
+  color: #FFFFFF; /* Yeni: Beyaz */
+  border-color: #2A2D49;
+  box-shadow: 0 0 10px rgba(42, 45, 73, 0.5);
+}
+
+.project-link.details-button {
+  /* Temel .project-link stillerini miras alır */
+  /* Gerekirse burada özelleştirmeler yapılabilir, ancak şimdilik aynı bırakalım */
+  /* Projects.js içindeki motion.button'a doğrudan hover stilleri verildi */
+  background-color: transparent; /* Butonun kendi hover'ı için başlangıç */
+  color: #7B61FF;
+  border: 1px solid #7B61FF;
+}
+
+/* Modal Stilleri */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(13, 15, 26, 0.85); /* Çok Koyu Uzay Mavisi/Siyah - yüksek opaklık */
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000; /* Header'ın üzerinde olmalı */
+  padding: 20px; /* Küçük ekranlarda kenarlara yapışmasın */
+}
+
+.modal-content {
+  background-color: #1C1E30; /* Derin Uzay Mavisi */
+  padding: 30px;
+  border-radius: 12px;
+  border: 1px solid rgba(123, 97, 255, 0.4); /* Neon Mor - biraz daha yumuşak */
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+  width: 90%;
+  max-width: 650px; /* Modal genişliği */
+  max-height: 90vh; /* Ekran yüksekliğinin %90'ı */
+  overflow-y: auto; /* İçerik sığmazsa kaydırma */
+  position: relative; /* Framer Motion pozisyonlamasına yardımcı olmak için (opsiyonel) */
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(123, 97, 255, 0.2);
+}
+
+.modal-header h2 {
+  color: #FFFFFF; /* Saf Beyaz */
+  font-size: 1.8em;
+  margin: 0;
+  font-weight: 600;
+}
+
+.modal-close-button {
+  background: none;
+  border: none;
+  color: #E0E0FF; /* Çok Açık Lavanta */
+  font-size: 2em;
+  cursor: pointer;
+  padding: 0 5px;
+  line-height: 1;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+/* .modal-close-button hover stili JS'de motion ile tanımlı, gerekirse buraya da eklenebilir */
+.modal-close-button:hover {
+   color: #7B61FF; /* Neon Mor */
+   /* transform: rotate(90deg); JS'de tanımlı */
+}
+
+.modal-body {
+  /* Gerekirse ek padding */
+}
+
+.modal-image-container {
+  width: 100%;
+  max-height: 280px; /* Resim yüksekliği küçültüldü */
+  overflow: hidden;
+  border-radius: 8px;
+  margin-bottom: 25px;
+  background-color: #0D0F1A; /* Resim yüklenene kadar */
+}
+
+.modal-project-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* veya 'contain' eğer resmin tamamı görünmesi isteniyorsa */
+  display: block; /* Altındaki boşluğu engellemek için */
+}
+
+.modal-description {
+  color: #E0E0FF; /* Çok Açık Lavanta */
+  font-size: 1em;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.modal-body h3 {
+  color: #7B61FF; /* Neon Mor */
+  font-size: 1.3em;
+  margin-top: 25px;
+  margin-bottom: 15px;
+  font-weight: 500;
+}
+
+.modal-body ul {
+  list-style: none; /* default list style kaldırıldı */
+  padding-left: 0; /* default padding kaldırıldı */
+  margin-bottom: 0; /* Alt boşluk kaldırıldı */
+}
+
+.modal-body ul li {
+  color: #E0E0FF; /* Çok Açık Lavanta */
+  font-size: 0.95em;
+  line-height: 1.8;
+  margin-bottom: 10px;
+  padding-left: 20px; /* İkon için yer */
+  position: relative;
+}
+
+.modal-body ul li::before {
+  content: '\272D'; /* Uzay temalı bir yıldız (veya başka bir unicode karakter: ✨, ✧, ✦ ) */
+  color: #7B61FF; /* Neon Mor */
+  position: absolute;
+  left: 0;
+  top: 1px; /* Hizalama için ayarlanabilir */
+  font-size: 0.9em;
+}
+
+/* Küçük ekranlar için modal iyileştirmeleri */
+@media (max-width: 768px) {
+  .modal-content {
+    padding: 20px;
+    width: 95%;
+    max-height: 85vh;
+  }
+  .modal-header h2 {
+    font-size: 1.6em;
+  }
+  .modal-close-button {
+    font-size: 1.8em;
+  }
+  .modal-image-container {
+    max-height: 220px; /* Mobil için resim biraz daha küçük */
+    margin-bottom: 20px;
+  }
+  .modal-description {
+    font-size: 0.95em;
+  }
+   .modal-body h3 {
+    font-size: 1.2em;
+  }
+  .modal-body ul li {
+    font-size: 0.9em;
+  }
+}
+
+@media (max-width: 768px) {
+  .projects-section h2 {
+    font-size: 2.2em;
+    margin-bottom: 40px;
+  }
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  .project-title {
+    font-size: 1.5em;
+  }
+  .project-link {
+    padding: 8px 15px;
+    font-size: 0.85em;
+  }
+} 

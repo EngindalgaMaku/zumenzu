@@ -1,0 +1,110 @@
+.skills-section {
+  padding: 60px 20px;
+  /* background-color: #0D0F1A; Yeni: Çok Koyu Uzay Mavisi/Siyah - KALDIRILDI (App.css body ile aynıydı zaten, ama explicit tanımı kaldıralım) */
+}
+
+.skills-section h2 {
+  text-align: center;
+  font-size: 2.5em; /* Poppins */
+  margin-bottom: 50px;
+  color: #FFFFFF; /* Beyaz */
+}
+
+.skills-container {
+  max-width: 900px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.skill-item {
+  background-color: #1C1E30; /* Yeni: Derin Uzay Mavisi */
+  padding: 25px;
+  border-radius: 10px;
+  border: 1px solid rgba(123, 97, 255, 0.2); /* Yeni: Neon Mor transparan, biraz daha belirgin */
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.35); /* Gölge güncellendi */
+}
+
+/*
+.skill-item:hover {
+  transform: translateY(-5px);
+}
+*/
+
+.skill-info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.skill-icon-wrapper {
+  font-size: 1.8em; /* İkon boyutu korunabilir veya ayarlanabilir */
+  margin-right: 18px; /* Boşluk biraz artırıldı */
+  color: #7B61FF; /* Yeni: Neon Mor */
+  display: flex; /* İkonu dikeyde ortalamak için */
+  align-items: center; /* İkonu dikeyde ortalamak için */
+  justify-content: center; /* İkonu yatayda ortalamak için */
+  width: 40px; /* Sabit genişlik */
+  height: 40px; /* Sabit yükseklik */
+}
+
+.skill-icon-wrapper svg { /* SVG elementlerinin boyutunu kontrol etmek için */
+  width: 100%;
+  height: 100%;
+}
+
+.skill-name {
+  font-size: 1.15em; /* Poppins veya Open Sans 600 */
+  font-weight: 600;
+  color: #E0E0FF; /* Yeni: Çok Açık Lavanta */
+  letter-spacing: 0.4px; /* Harf aralığı eklendi */
+}
+
+.skill-level-bar-container {
+  width: 100%;
+  background-color: rgba(42, 45, 73, 0.5); /* Yeni: Orta Uzay Mavisi/Mor transparan */
+  border-radius: 25px; /* Tam yuvarlak */
+  overflow: hidden;
+  height: 24px;
+  padding: 3px; /* İç bara biraz boşluk */
+}
+
+.skill-level-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #7B61FF, #4A40A3); /* Yeni: Neon Mor -> Koyu Mor */
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  border-radius: 20px; /* İç bar da yuvarlak */
+  transition: width 1s ease-out; /* Genişlik animasyonu yumuşak kalsın */
+}
+
+.skill-level-bar[style*="width: 100%"] {
+    border-radius: 20px; /* Tam dolulukta tüm köşeler yuvarlak olsun (5px yerine ana radius ile aynı) */
+}
+
+.skill-level-text {
+  color: #FFFFFF; /* Yeni: Beyaz (yeni gradient üzerinde daha iyi) */
+  font-size: 0.8em;
+  font-weight: 700; /* Poppins */
+  padding: 0 10px; /* Sağa ve sola boşluk */
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .skills-section h2 {
+    font-size: 2.2em;
+    margin-bottom: 40px;
+  }
+  .skills-container {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+  .skill-name {
+    font-size: 1.1em;
+  }
+  .skill-level-bar-container {
+    height: 22px;
+  }
+} 

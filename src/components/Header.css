@@ -1,0 +1,187 @@
+.portfolio-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px 50px;
+  background-color: transparent; /* Başlangıçta şeffaf */
+  backdrop-filter: none; /* Başlangıçta blur yok */
+  -webkit-backdrop-filter: none;
+  color: #E0E0FF; /* Ana metin rengi: Çok Açık Lavanta */
+  position: sticky; /* Sayfa kaydırıldığında üstte kalması için */
+  top: 0;
+  z-index: 1000; /* Diğer elementlerin üzerinde kalması için */
+  box-shadow: none; /* Başlangıçta gölge yok */
+  width: 100%;
+  box-sizing: border-box; /* Padding ve border'ın genişliğe dahil olması için */
+  transition: background-color 0.4s ease-out, backdrop-filter 0.4s ease-out, box-shadow 0.4s ease-out; /* Yumuşak geçiş */
+}
+
+.portfolio-header.scrolled {
+  background-color: rgba(28, 30, 48, 0.85); /* İkincil Arka Plan: #1C1E30 (Derin Uzay Mavisi) %85 opasite */
+  backdrop-filter: blur(10px); /* Arka planı bulanıklaştır (destekleyen tarayıcılarda) */
+  -webkit-backdrop-filter: blur(10px); /* Safari için */
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4); /* Gölge koyu ve belirgin */
+}
+
+.logo {
+  /* font-size: 1.8em; Artık resim için geçerli değil */
+  /* font-weight: 700; Artık resim için geçerli değil */
+  /* color: #FFFFFF; Artık resim için geçerli değil */
+  /* cursor: default; Link içinde olduğu için default yerine pointer olacak */
+  display: flex; /* İçindeki <a> etiketinin hizalanması için */
+  align-items: center;
+}
+
+/* .logo span { Artık span yok, kaldırılabilir veya yorum satırı yapılabilir
+  display: inline-block; 
+} */
+
+/* YENİ STİL: Logo resmi için */
+.header-logo-image {
+  height: 70px; /* Navbar yüksekliğine göre ayarlanabilir. Örn: 15px padding + 15px padding + X = ~logo yüksekliği */
+  /* max-height: calc(100% - 10px); Eğer padding'e göre dinamik istenirse, ama sabit daha kolay olabilir */
+  width: auto; /* Oranını koruması için */
+  display: block; /* Altında oluşabilecek boşlukları engellemek için */
+  filter: brightness(0) invert(1); /* Eğer logo siyahsa ve beyaz görünmesi isteniyorsa. SVG ise fill="currentColor" daha iyi olurdu.*/
+  /* Yukarıdaki filter, eğer logonuz zaten beyaz veya açık renkliyse gerekmeyebilir veya ayarlanması gerekebilir. */
+  /* Logonuzun orijinal renklerine göre bu satırı düzenleyin veya kaldırın. */
+}
+
+.portfolio-header nav ul {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.portfolio-header nav ul li {
+  margin-left: 30px;
+}
+
+.portfolio-header nav ul li a {
+  color: #E0E0FF; /* Çok Açık Lavanta */
+  text-decoration: none;
+  font-size: 1.1em;
+  font-weight: 500; /* Poppins için */
+  padding: 5px 0;
+  position: relative;
+  letter-spacing: 0.4px;
+  transition: color 0.3s ease; /* Renk geçişi eklendi */
+}
+
+/* Aktif linkin metin rengi */
+.portfolio-header nav ul li a.active-link-text,
+.portfolio-header nav ul li:hover a {
+  color: #FFFFFF; /* Saf Beyaz - daha parlak */
+}
+
+/* Linklerin altındaki hover çizgisi (aktif olmadığında) */
+.portfolio-header nav ul li a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -6px; /* Indikatör ile çakışmaması için biraz aşağı aldık */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #7B61FF; /* Neon Mor */
+  transition: width 0.3s ease-in-out;
+}
+
+.portfolio-header nav ul li:not(.active):hover a::after { 
+  width: 70%; /* Aktif değilken hover'da çizgi genişliği */
+}
+
+/* Aktif navigasyon linkinin altındaki indikatör */
+.nav-item .active-nav-indicator {
+  position: absolute;
+  bottom: -6px; /* a::after ile aynı hizada */
+  left: 0;
+  right: 0;
+  height: 2.5px; /* Biraz daha kalın */
+  background: #7B61FF; /* Neon Mor */
+  border-radius: 2px;
+  z-index: -1; /* Link metninin arkasında kalması için, eğer gerekirse */
+}
+
+/* listItem (.nav-item) için pozisyonlama */
+.nav-item {
+  position: relative; /* Altındaki indikatörün doğru pozisyonlanması için */
+  padding: 0 5px; /* İçeriğe biraz padding, böylece indikatör kenarlara tam yapışmaz */
+}
+
+/* motion.li whileHover kullandığı için CSS hover'ını global a:hover devralır veya direkt motion'da tanımlanır */
+/* .portfolio-header nav ul li motion.a:hover, */ /* Eğer motion.a kullanırsak */
+/* .portfolio-header nav ul li:hover a::after, */ 
+/* .portfolio-header nav ul li a:focus::after { */
+/*  width: 100%; */
+/* } */
+
+/* App.css'deki genel a:hover burayı etkileyecektir, gerekirse özel hover rengi: 
+.portfolio-header nav ul li:hover a {
+  color: #F564A9; 
+}
+*/
+
+/* Mobil uyumluluk için temel bir örnek */
+@media (max-width: 768px) {
+  .portfolio-header {
+    /* Başlangıçta mobil için de şeffaf olabilir veya hafif bir arka plan kalabilir */
+    /* background-color: transparent; */ 
+    flex-direction: column;
+    padding: 20px;
+    background-color: rgba(28, 30, 48, 0.92); /* Mobil için Derin Uzay Mavisi, biraz daha opak */
+  }
+
+  .logo {
+    margin-bottom: 15px;
+    /* font-size: 1.7em; */
+  }
+
+  .portfolio-header nav ul {
+    /* margin-top: 15px; // Üstteki logo margin'i yeterli olabilir */
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .portfolio-header nav ul li {
+    margin-left: 0;
+    margin-bottom: 12px;
+  }
+
+  .portfolio-header nav ul li:last-child {
+    margin-bottom: 0;
+  }
+
+  .portfolio-header nav ul li a {
+    /* font-size: 1em; */
+  }
+
+  .portfolio-header.scrolled {
+    /* Mobil için kaydırıldığında arka plan, normal .scrolled ile aynı veya farklı olabilir */
+    background-color: rgba(28, 30, 48, 0.92); /* Mobil için Derin Uzay Mavisi, biraz daha opak */
+  }
+}
+
+@media (max-width: 480px) {
+  /* .logo {
+    font-size: 1.6em;
+  } */
+  .portfolio-header nav ul li a {
+    /* font-size: 0.95em; */
+  }
+  .portfolio-header {
+    padding: 15px;
+  }
+}
+
+/* YENİ STİL */
+.header-content-wrapper {
+  display: flex;
+  justify-content: space-between; /* Logo ve nav'ı wrapper içinde iki uca yasla */
+  align-items: center;
+  width: 100%;
+  max-width: 1200px; /* Sayfanın ana içerik genişliğiyle aynı veya benzer */
+  /* Eğer .portfolio-header'daki padding buraya taşınacaksa: */
+  /* padding: 0 20px; veya padding: 0; .portfolio-header'daki padding: 20px 0; olurdu */
+} 

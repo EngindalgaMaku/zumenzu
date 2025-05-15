@@ -1,0 +1,90 @@
+.portfolio-footer {
+  background-color: #0D0F1A; /* Yeni: Çok Koyu Uzay Mavisi/Siyah */
+  color: #E0E0FF; /* Yeni: Çok Açık Lavanta */
+  padding: 35px 20px;
+  text-align: center;
+  border-top: 1px solid rgba(123, 97, 255, 0.15); /* Yeni: Neon Mor transparan (ayırıcı) */
+  margin-top: auto; /* Sayfa içeriği kısa olsa bile en altta kalmasını sağlar */
+}
+
+.footer-content {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column; /* Mobil için varsayılan */
+  align-items: center;
+  justify-content: space-between; /* Daha büyük ekranlarda içeriği yay */
+  position: relative; /* Yukarı çık butonu için */
+}
+
+.footer-content p {
+  margin: 0 0 15px 0; /* Mobil için alta boşluk */
+  font-size: 0.9em; /* Open Sans */
+  color: #E0E0FF; /* Yeni: Çok Açık Lavanta */
+  letter-spacing: 0.3px; /* Harf aralığı eklendi */
+}
+
+.footer-links a {
+  color: #E0E0FF; /* Yeni: Çok Açık Lavanta */
+  text-decoration: none;
+  margin: 0 10px;
+  font-size: 0.9em;
+  transition: color 0.3s ease;
+  font-weight: 500;
+  letter-spacing: 0.4px; /* Harf aralığı eklendi */
+}
+
+.footer-links a:hover {
+  color: #7B61FF; /* Yeni: Neon Mor */
+}
+
+.scroll-to-top {
+  background-color: #7B61FF; /* Yeni: Neon Mor */
+  color: #0D0F1A; /* Yeni: Çok Koyu Uzay Mavisi/Siyah (kontrast için) */
+  border: none;
+  border-radius: 50%; /* Tamamen yuvarlak */
+  width: 48px;
+  height: 48px;
+  font-size: 1.6em; /* Ok boyutu */
+  line-height: 48px; /* Okun dikeyde ortalanması */
+  text-align: center;
+  cursor: pointer;
+  position: absolute; /* Footer content'e göre konumlanır */
+  bottom: 15px; /* Mobil için konumu */
+  right: 0px;   /* Mobil için konumu */
+  box-shadow: 0 3px 12px rgba(123, 97, 255, 0.4); /* Yeni: Neon Mor gölge */
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  opacity: 0.9;
+}
+
+.scroll-to-top:hover {
+  background-color: #4A40A3; /* Yeni: Koyu Mor */
+  color: #E0E0FF; /* Yeni: Çok Açık Lavanta */
+  transform: scale(1.1);
+  box-shadow: 0 5px 15px rgba(74, 64, 163, 0.5); /* Yeni: Koyu Mor gölge */
+  opacity: 1;
+}
+
+/* Daha büyük ekranlar için düzenlemeler */
+@media (min-width: 768px) {
+  .footer-content {
+    flex-direction: row; /* Yatay düzene geç */
+  }
+  .footer-content p {
+    margin: 0; /* Alt boşluğu kaldır */
+  }
+  .scroll-to-top {
+    bottom: 0; /* Footer content'in sağ alt köşesine yasla */
+    right: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .scroll-to-top {
+    width: 42px;
+    height: 42px;
+    line-height: 42px;
+    font-size: 1.4em;
+    bottom: 10px;
+  }
+} 
